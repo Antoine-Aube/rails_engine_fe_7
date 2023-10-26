@@ -8,6 +8,10 @@ class MerchantService
     get_url("/api/v1/merchants")
   end
 
+  def find_merchant(query)
+    get_url("/api/v1/merchants/find?name=#{query}")
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)

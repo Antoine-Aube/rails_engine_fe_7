@@ -3,3 +3,16 @@
   <%@merchants.each do |merchant| %>
     <%= link_to merchant.name, "/merchants/#{merchant.id}" %><br>
   <%end %>
+
+  <br>
+  <br>
+  <br>
+  
+
+  <center>
+<%= form_with url: "/merchants/searched_merchants", method: :get, data: { turbo: false } do |form| %>
+  <%= form.text_field :q, placeholder: "search" %>
+  <%= form.submit "Find Merchant" %>
+<% end %>
+</center>
+

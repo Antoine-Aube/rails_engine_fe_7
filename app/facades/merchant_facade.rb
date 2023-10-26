@@ -7,7 +7,7 @@ class MerchantFacade
     json = service.get_merchants
     json[:data].map do |merchant_data|
       Merchant.new(merchant_data)
-    end.first(10)
+    end
   end
 
   def merchant_items(merchant)
@@ -15,6 +15,12 @@ class MerchantFacade
     json[:data].map do |item_data|
       Item.new(item_data)
     end
+  end
+
+  def merchant_search(query)
+    json = service.find_merchant(query)
+    Merchant.new(json[:data])
+    # require 'pry';binding.pry
   end
 
   def service
