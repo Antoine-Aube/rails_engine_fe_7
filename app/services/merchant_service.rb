@@ -1,11 +1,15 @@
 class MerchantService
 
+  def get_merchant_items(merchant)
+    get_url("/api/v1/merchants/#{merchant}/items")
+  end
+
   def get_merchants
-    get_url("/merchants")
+    get_url("/api/v1/merchants")
   end
 
   def get_url(url)
-    conn.get(url)
+    response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end
 
